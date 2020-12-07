@@ -1,0 +1,12 @@
+arm_controller_name:
+  type: arm_controller_ns/joint1ControllerClass
+  j1Joint_name: Joint1
+# rf_controller_name:
+#   type: rov_controller_ns/RFControllerClass
+#   rfjoint_name: right_front_wheel_joint
+# lb_controller_name:
+#   type: rov_controller_ns/LBControllerClass
+#   lbjoint_name: left_back_wheel_joint
+# rb_controller_name:
+#   type: rov_controller_ns/RBControllerClass
+#   rbjoint_name: right_back_wheel_joint

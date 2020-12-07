@@ -1,0 +1,14 @@
+<library path="lib/libarmctl_lib">
+	<class name="arm_controller_ns/joint1ControllerClass"
+				 type="arm_controller_ns::joint1ControllerClass"
+				 base_class_type="controller_interface::ControllerBase" />
+	<!-- <class name="arm_controller_ns/RFControllerClass"
+				 type="arm_controller_ns::RFControllerClass"
+				 base_class_type="controller_interface::ControllerBase" />
+	<class name="arm_controller_ns/LBControllerClass"
+				 type="arm_controller_ns::LBControllerClass"
+				 base_class_type="controller_interface::ControllerBase" />			 
+	<class name="arm_controller_ns/RBControllerClass"
+				 type="arm_controller_ns::RBControllerClass"
+				 base_class_type="controller_interface::ControllerBase" /> -->
+</library>
