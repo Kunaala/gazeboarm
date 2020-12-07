@@ -1,0 +1,20 @@
+<?xml version="1.0" ?>
+<group ns="/arm_controller_ns">
+<launch>
+  <!-- Launch Gazebo  -->
+  <!-- <include file="/home/eye/Documents/gaz2ws/src/urdf_tutorial/launch/gazebo.launch"/>    -->
+  <!-- Load joint controller configurations from YAML file to parameter server -->
+  <!-- <include file="/home/eye/Documents/Arm_irb/src/Arm_irb/launch/gazebo.launch"/> -->
+  <rosparam file="$(find armctl)/armctl.yaml" command="load"/>
+	<!-- Spaw the controller -->
+  <node name="j1_controller_spawner" pkg="controller_manager" type="spawner" respawn="false"
+	output="screen"  args="arm_controller_name"/>
+  <!-- <node name="rf_controller_spawner" pkg="controller_manager" type="spawner" respawn="false"
+	output="screen"  args="rf_controller_name"/>
+  <node name="lb_controller_spawner" pkg="controller_manager" type="spawner" respawn="false"
+	output="screen"  args="lb_controller_name"/>
+  <node name="rb_controller_spawner" pkg="controller_manager" type="spawner" respawn="false"
+	output="screen"  args="rb_controller_name"/> -->
+  <node name="arm_node" pkg="armctl" type="armctl_node" output="screen" />
+</launch>
+</group>

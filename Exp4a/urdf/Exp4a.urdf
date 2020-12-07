@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.5.1-0-g916b5db  Build Version: 1.5.7152.31018
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot
+  name="Exp4a">
+  <link
+    name="base_link">
+    <inertial>
+      <origin
+        xyz="-0.0942482366980368 0.00034841181543606 0.0698252025045274"
+        rpy="0 0 0" />
+      <mass
+        value="45.100751124013" />
+      <inertia
+        ixx="0.904395771792202"
+        ixy="0.00553474911760541"
+        ixz="0.02398152767563"
+        iyy="1.65416974621034"
+        iyz="-0.000559853203844208"
+        izz="2.38903477327703" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Exp4a/meshes/base_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Exp4a/meshes/base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <link
+    name="Swivel">
+    <inertial>
+      <origin
+        xyz="0.0338387160019819 0.0183002939600045 0.274868903694973"
+        rpy="0 0 0" />
+      <mass
+        value="47.9939858945412" />
+      <inertia
+        ixx="2.26462021835913"
+        ixy="0.104482896195246"
+        ixz="-0.357348245737225"
+        iyy="1.75194669684452"
+        iyz="0.0193195705611302"
+        izz="1.63365848320273" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Exp4a/meshes/Swivel.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Exp4a/meshes/Swivel.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="Joint1"
+    type="continuous">
+    <origin
+      xyz="0 0 0.164"
+      rpy="0 0 0.068596" />
+    <parent
+      link="base_link" />
+    <child
+      link="Swivel" />
+    <axis
+      xyz="0 0 1" />
+    <!-- <limit
+      lower="-2.3562"
+      upper="2.3562"
+      effort="10"
+      velocity="2.618" /> -->
+  </joint>
+  <link
+    name="Arm">
+    <inertial>
+      <origin
+        xyz="0.0508731045196118 0.00746958193207304 0.321534281626339"
+        rpy="0 0 0" />
+      <mass
+        value="15.892970415351" />
+      <inertia
+        ixx="0.642112396550128"
+        ixy="0.00117650675403156"
+        ixz="0.023464167733746"
+        iyy="0.630494054637527"
+        iyz="0.000756305686730419"
+        izz="0.0852091581783339" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Exp4a/meshes/Arm.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Exp4a/meshes/Arm.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="Joint2"
+    type="revolute">
+    <origin
+      xyz="0.1 0 0.44"
+      rpy="0 0.024043 0" />
+    <parent
+      link="Swivel" />
+    <child
+      link="Arm" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      lower="-1.7453"
+      upper="1.9198"
+      effort="10"
+      velocity="2.618" />
+  </joint>
+  <gazebo reference="Swivel">
+        <mu1 value="200.0"/>
+        <mu2 value="100.0"/>
+        <kp value="10000000.0" />
+        <kd value="1.0" />
+        <material>Gazebo/Grey</material>
+        </gazebo>
+  <transmission name="Swivel_trans">
+        <type>transmission_interface/SimpleTransmission</type>
+        <actuator name="Swivel_motor">
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+        <joint name="Joint1">
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+        </joint>
+  </transmission>
+  <gazebo>
+    <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+      <!-- <robotNamespace>/rov_controller_ns</robotNamespace> -->
+    </plugin>
+  </gazebo>
+</robot>
